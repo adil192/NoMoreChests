@@ -5,13 +5,14 @@
 	"name": "NoMoreChests",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me!"
+		"adil192"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/adil192/NoMoreChests",
+		"sources": "https://github.com/adil192/NoMoreChests",
+		"issues": "https://github.com/adil192/NoMoreChests/issues"
 	},
-	"license": "CC0-1.0",
+	"license": "LGPLv2.1",
 	"icon": "assets/nomorechests/icon.png",
 	"environment": "*",
 	"entrypoints": {
@@ -32,13 +33,10 @@
 		"nomorechests.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.16.14",
+		"fabricloader": ">=0.16.0",
 		"minecraft": "~1.21.1",
 		"java": ">=21",
 		"fabric-api": "*",
 		"fabric-language-kotlin": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }
