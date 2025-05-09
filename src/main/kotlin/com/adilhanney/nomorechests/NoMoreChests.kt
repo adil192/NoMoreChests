@@ -4,7 +4,8 @@ import net.fabricmc.api.ModInitializer
 import org.slf4j.LoggerFactory
 
 object NoMoreChests : ModInitializer {
-    private val logger = LoggerFactory.getLogger("nomorechests")
+	val modId = "nomorechests"
+	val logger = LoggerFactory.getLogger(modId)
 
 	override fun onInitialize() {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
