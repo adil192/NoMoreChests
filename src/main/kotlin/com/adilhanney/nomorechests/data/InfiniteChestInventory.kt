@@ -7,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.RegistryByteBuf
 import net.minecraft.registry.RegistryWrapper
+import net.minecraft.server.network.ServerPlayerEntity
 import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent
 import org.ladysnake.cca.api.v3.entity.C2SSelfMessagingComponent
 
@@ -61,4 +62,7 @@ class InfiniteChestInventoryImpl(
   override fun handleC2SMessage(buf: RegistryByteBuf) {
     TODO("Not yet implemented")
   }
+
+  /** Only sync inventory information with its owner */
+  override fun shouldSyncWith(player: ServerPlayerEntity) = player == owner
 }
