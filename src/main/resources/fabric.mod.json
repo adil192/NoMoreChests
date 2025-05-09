@@ -27,6 +27,12 @@
 				"value": "com.adilhanney.nomorechests.NoMoreChestsDataGenerator",
 				"adapter": "kotlin"
 			}
+		],
+		"cardinal-components": [
+			{
+				"value": "com.adilhanney.nomorechests.data.ModComponents",
+				"adapter": "kotlin"
+			}
 		]
 	},
 	"mixins": [
@@ -38,5 +44,10 @@
 		"java": ">=21",
 		"fabric-api": "*",
 		"fabric-language-kotlin": "*"
+	},
+	"custom": {
+		"cardinal-components": [
+			"nomorechests:infinitechestinventory"
+		]
 	}
 }

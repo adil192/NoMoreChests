@@ -1,5 +1,7 @@
 package com.adilhanney.nomorechests.block.entity
 
+import com.adilhanney.nomorechests.block.ModBlocks
+import com.adilhanney.nomorechests.data.InfiniteChestInventory
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.ChestLidAnimator
@@ -29,8 +31,8 @@ class InfiniteChestBlockEntity(pos: BlockPos, state: BlockState) :
       world.addSyncedBlockEvent(this@InfiniteChestBlockEntity.pos, ModBlocks.infiniteChest, 1, newViewerCount)
     }
 
-    // TODO: Make a `player.infiniteChestInventory` property
-    protected override fun isPlayerViewing(player: PlayerEntity) = player.infiniteChestInventory.isActiveBlockEntity(this@InfiniteChestBlockEntity)
+    protected override fun isPlayerViewing(player: PlayerEntity) =
+      InfiniteChestInventory.of(player)?.activeBlockEntity == this@InfiniteChestBlockEntity
   }
 
   companion object {

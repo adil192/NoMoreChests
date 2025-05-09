@@ -1,5 +1,8 @@
+@file:Suppress("UnstableApiUsage")
+
 package com.adilhanney.nomorechests.data
 
+import com.adilhanney.nomorechests.block.entity.InfiniteChestBlockEntity
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.network.RegistryByteBuf
@@ -7,9 +10,21 @@ import net.minecraft.registry.RegistryWrapper
 import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent
 import org.ladysnake.cca.api.v3.entity.C2SSelfMessagingComponent
 
-class InfiniteChestInventory(
-  val owner: PlayerEntity
+abstract class InfiniteChestInventory(
+  open val owner: PlayerEntity
 ) : C2SSelfMessagingComponent, AutoSyncedComponent {
+  companion object {
+    fun of(owner: PlayerEntity): InfiniteChestInventory? =
+      ModComponents.infiniteChestInventory.maybeGet(owner).orElse(null)
+  }
+
+  /** Used to determine [net.minecraft.block.entity.ViewerCountManager.isPlayerViewing] */
+  var activeBlockEntity: InfiniteChestBlockEntity? = null
+}
+
+class InfiniteChestInventoryImpl(
+  override val owner: PlayerEntity,
+) : InfiniteChestInventory(owner) {
   companion object {
     private const val TABS_TAG = "tabs"
   }

@@ -2,6 +2,7 @@ package com.adilhanney.nomorechests.block
 
 import com.adilhanney.nomorechests.block.entity.InfiniteChestBlockEntity
 import com.adilhanney.nomorechests.block.entity.ModBlockEntityType
+import com.adilhanney.nomorechests.data.InfiniteChestInventory
 import com.mojang.serialization.MapCodec
 import net.minecraft.block.*
 import net.minecraft.block.DoubleBlockProperties.PropertySource
@@ -65,7 +66,7 @@ class InfiniteChestBlock(settings: Settings) :
   }
 
   protected override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hit: BlockHitResult): ActionResult {
-    val infiniteChestInventory = player.infiniteChestInventory
+    val infiniteChestInventory = InfiniteChestInventory.of(player)
     val blockEntity = world.getBlockEntity(pos)
     if (infiniteChestInventory != null && blockEntity is InfiniteChestBlockEntity) {
       val blockAbovePos = pos.up()
@@ -75,7 +76,7 @@ class InfiniteChestBlock(settings: Settings) :
       } else if (world.isClient) {
         return ActionResult.success(true)
       } else {
-        infiniteChestInventory.setActiveBlockEntity(blockEntity)
+        infiniteChestInventory.activeBlockEntity = blockEntity
 //        player.openHandledScreen() // TODO: Create UI
         return ActionResult.CONSUME;
       }
