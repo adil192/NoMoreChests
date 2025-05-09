@@ -66,9 +66,8 @@ class InfiniteChestBlock(settings: Settings) :
   }
 
   protected override fun onUse(state: BlockState, world: World, pos: BlockPos, player: PlayerEntity, hit: BlockHitResult): ActionResult {
-    val infiniteChestInventory = InfiniteChestInventory.of(player)
     val blockEntity = world.getBlockEntity(pos)
-    if (infiniteChestInventory != null && blockEntity is InfiniteChestBlockEntity) {
+    if (blockEntity is InfiniteChestBlockEntity) {
       val blockAbovePos = pos.up()
       if (world.getBlockState(blockAbovePos).isSolidBlock(world, blockAbovePos)) {
         // Chest is blocked by a solid block above it
@@ -76,6 +75,7 @@ class InfiniteChestBlock(settings: Settings) :
       } else if (world.isClient) {
         return ActionResult.success(true)
       } else {
+        val infiniteChestInventory = InfiniteChestInventory.of(player)
         infiniteChestInventory.activeBlockEntity = blockEntity
 //        player.openHandledScreen() // TODO: Create UI
         return ActionResult.CONSUME;

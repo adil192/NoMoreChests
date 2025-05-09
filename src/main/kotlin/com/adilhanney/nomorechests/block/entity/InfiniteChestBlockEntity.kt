@@ -32,7 +32,7 @@ class InfiniteChestBlockEntity(pos: BlockPos, state: BlockState) :
     }
 
     protected override fun isPlayerViewing(player: PlayerEntity) =
-      InfiniteChestInventory.of(player)?.activeBlockEntity == this@InfiniteChestBlockEntity
+      InfiniteChestInventory.of(player).activeBlockEntity == this@InfiniteChestBlockEntity
   }
 
   companion object {

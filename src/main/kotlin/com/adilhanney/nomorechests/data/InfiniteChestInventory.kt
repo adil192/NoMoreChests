@@ -15,8 +15,7 @@ abstract class InfiniteChestInventory(
   open val owner: PlayerEntity
 ) : C2SSelfMessagingComponent, AutoSyncedComponent {
   companion object {
-    fun of(owner: PlayerEntity): InfiniteChestInventory? =
-      ModComponents.infiniteChestInventory.maybeGet(owner).orElse(null)
+    fun of(owner: PlayerEntity): InfiniteChestInventory = ModComponents.infiniteChestInventory.get(owner)
   }
 
   /** Used to determine [net.minecraft.block.entity.ViewerCountManager.isPlayerViewing] */
