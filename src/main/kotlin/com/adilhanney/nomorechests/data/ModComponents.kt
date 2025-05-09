@@ -10,13 +10,13 @@ import org.ladysnake.cca.api.v3.entity.RespawnCopyStrategy
 
 class ModComponents : EntityComponentInitializer {
   companion object {
-    val infiniteChestInventory: ComponentKey<InfiniteChestInventoryImpl> = ComponentRegistry.getOrCreate(
+    val infiniteChestInventory: ComponentKey<InfiniteChestInventory> = ComponentRegistry.getOrCreate(
       Identifier.of(NoMoreChests.modId, "infinitechestinventory"),
-      InfiniteChestInventoryImpl::class.java,
+      InfiniteChestInventory::class.java,
     )
   }
 
   override fun registerEntityComponentFactories(registry: EntityComponentFactoryRegistry) {
-    registry.registerForPlayers(infiniteChestInventory, ::InfiniteChestInventoryImpl, RespawnCopyStrategy.ALWAYS_COPY)
+    registry.registerForPlayers(infiniteChestInventory, ::InfiniteChestInventory, RespawnCopyStrategy.ALWAYS_COPY)
   }
 }

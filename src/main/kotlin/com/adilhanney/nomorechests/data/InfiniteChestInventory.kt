@@ -11,23 +11,17 @@ import net.minecraft.server.network.ServerPlayerEntity
 import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent
 import org.ladysnake.cca.api.v3.entity.C2SSelfMessagingComponent
 
-abstract class InfiniteChestInventory(
-  open val owner: PlayerEntity
+class InfiniteChestInventory(
+  val owner: PlayerEntity,
 ) : C2SSelfMessagingComponent, AutoSyncedComponent {
   companion object {
     fun of(owner: PlayerEntity): InfiniteChestInventory = ModComponents.infiniteChestInventory.get(owner)
+
+    private const val TABS_TAG = "tabs"
   }
 
   /** Used to determine [net.minecraft.block.entity.ViewerCountManager.isPlayerViewing] */
   var activeBlockEntity: InfiniteChestBlockEntity? = null
-}
-
-class InfiniteChestInventoryImpl(
-  override val owner: PlayerEntity,
-) : InfiniteChestInventory(owner) {
-  companion object {
-    private const val TABS_TAG = "tabs"
-  }
 
   /**
    * A map of tab names to their contents, in the order they should be displayed.
@@ -59,7 +53,7 @@ class InfiniteChestInventoryImpl(
   }
 
   override fun handleC2SMessage(buf: RegistryByteBuf) {
-    TODO("Not yet implemented")
+    // TODO("Not yet implemented")
   }
 
   /** Only sync inventory information with its owner */
