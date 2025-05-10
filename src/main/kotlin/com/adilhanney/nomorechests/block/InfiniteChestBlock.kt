@@ -36,8 +36,6 @@ class InfiniteChestBlock(settings: Settings) :
     val facing = HorizontalFacingBlock.FACING!!
     val waterlogged = Properties.WATERLOGGED!!
     protected val shape = createCuboidShape(1.0, 0.0, 1.0, 15.0, 14.0, 15.0)!!
-    // TODO: Add text
-    private val containerName = Text.translatable("nomorechests.container.infinite_chest")
   }
 
   override fun getCodec(): MapCodec<InfiniteChestBlock> = InfiniteChestBlock.codec
