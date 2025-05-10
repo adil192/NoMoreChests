@@ -46,7 +46,7 @@ class InfiniteChestTab(
   override fun isEmpty() = stacks.isEmpty()
   override fun canPlayerUse(player: PlayerEntity) = parent.owner == player
   override fun getMaxCountPerStack() = 9999999
-  override fun getMaxCount(stack: ItemStack) = getMaxCountPerStack()
+  override fun getMaxCount(stack: ItemStack) = if (stack.maxCount == 1) 1 else getMaxCountPerStack()
   override fun getStack(slot: Int): ItemStack = stacks.getOrElse(slot) { ItemStack.EMPTY }
 
   override fun removeStack(slot: Int, amount: Int): ItemStack {
