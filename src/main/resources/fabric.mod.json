@@ -35,6 +35,7 @@
 			}
 		]
 	},
+	"accessWidener": "nomorechests.accesswidener",
 	"mixins": [
 		"nomorechests.mixins.json"
 	],
