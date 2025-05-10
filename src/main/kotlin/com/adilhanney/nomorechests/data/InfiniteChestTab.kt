@@ -8,12 +8,14 @@ import net.minecraft.item.ItemStack
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.nbt.NbtElement
 import net.minecraft.nbt.NbtList
+import net.minecraft.recipe.RecipeInputProvider
+import net.minecraft.recipe.RecipeMatcher
 import net.minecraft.registry.RegistryWrapper
 import org.ladysnake.cca.api.v3.component.Component
 
 class InfiniteChestTab(
   val parent: InfiniteChestInventory,
-) : Component, Inventory {
+) : Component, Inventory, RecipeInputProvider {
   companion object {
     private const val STACKS_TAG = "stacks"
   }
@@ -71,6 +73,13 @@ class InfiniteChestTab(
   override fun clear() {
     for (i in stacks.indices) stacks[i] = ItemStack.EMPTY
     markDirty()
+  }
+
+  override fun provideRecipeInputs(finder: RecipeMatcher) {
+    for (stack in stacks) {
+      if (stack.isEmpty) continue
+      finder.addInput(stack)
+    }
   }
 
   override fun onOpen(player: PlayerEntity) {
