@@ -49,15 +49,17 @@ class InfiniteChestBlockEntity(pos: BlockPos, state: BlockState) :
     return super.onSyncedBlockEvent(type, data)
   }
 
-  // TODO: Find out where this is supposed to be called
   fun onOpen(player: PlayerEntity) {
     if (removed) return
     if (player.isSpectator) return
     stateManager.openContainer(player, world, pos, cachedState)
   }
 
-  // TODO: Find out where this is supposed to be called
-  fun canPlayerUse(player: PlayerEntity): Boolean = Inventory.canPlayerUse(this, player)
+  fun onClose(player: PlayerEntity) {
+    if (removed) return
+    if (player.isSpectator) return
+    stateManager.closeContainer(player, world, pos, cachedState)
+  }
 
   override fun getAnimationProgress(tickDelta: Float) = lidAnimator.getProgress(tickDelta)
 }

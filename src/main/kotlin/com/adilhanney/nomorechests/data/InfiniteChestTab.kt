@@ -73,6 +73,17 @@ class InfiniteChestTab(
     markDirty()
   }
 
+  override fun onOpen(player: PlayerEntity) {
+    parent.activeBlockEntity?.onOpen(player)
+    super.onOpen(player)
+  }
+
+  override fun onClose(player: PlayerEntity) {
+    parent.activeBlockEntity?.onClose(player)
+    parent.activeBlockEntity = null
+    super.onClose(player)
+  }
+
   fun addListener(listener: InventoryChangedListener) {
     if (listeners == null) listeners = mutableListOf()
     listeners!!.add(listener)
