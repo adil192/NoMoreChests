@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "nomorechests:block/infinite_chest"
+    }
+  }
+}
