@@ -2,6 +2,7 @@ package com.adilhanney.nomorechests.block.entity
 
 import com.adilhanney.nomorechests.block.ModBlocks
 import com.adilhanney.nomorechests.data.InfiniteChestInventory
+import com.adilhanney.nomorechests.screen.custom.InfiniteInventoryScreen
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory
 import net.minecraft.block.BlockState
 import net.minecraft.block.entity.BlockEntity
@@ -70,8 +71,7 @@ class InfiniteChestBlockEntity(pos: BlockPos, state: BlockState) :
   override fun getAnimationProgress(tickDelta: Float) = lidAnimator.getProgress(tickDelta)
 
   override fun getScreenOpeningData(player: ServerPlayerEntity) = player
-  // TODO: Add this to translations
-  override fun getDisplayName(): Text = Text.translatable("nomorechests.container.infinite_chest")
+  override fun getDisplayName(): Text = InfiniteInventoryScreen.TITLE
   override fun createMenu(
     syncId: Int,
     playerInventory: PlayerInventory?,
