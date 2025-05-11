@@ -1,5 +1,6 @@
 package com.adilhanney.nomorechests.block.entity
 
+import com.adilhanney.nomorechests.NoMoreChests
 import com.adilhanney.nomorechests.block.ModBlocks
 import com.mojang.datafixers.types.Type
 import net.minecraft.block.Block
@@ -21,6 +22,10 @@ class ModBlockEntityType<T : BlockEntity>(
     private fun <T : BlockEntity> create(id: String, builder: Builder<T>): BlockEntityType<T> {
       val type = Util.getChoiceType(TypeReferences.BLOCK_ENTITY, id)
       return Registry.register(Registries.BLOCK_ENTITY_TYPE, id, builder.build(type))
+    }
+
+    fun registerBlockEntities() {
+      NoMoreChests.logger.info("Registering mod block entities for ${NoMoreChests.modId}")
     }
   }
 }

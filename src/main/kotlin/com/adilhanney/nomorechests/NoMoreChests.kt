@@ -1,6 +1,7 @@
 package com.adilhanney.nomorechests
 
 import com.adilhanney.nomorechests.block.ModBlocks
+import com.adilhanney.nomorechests.block.entity.ModBlockEntityType
 import com.adilhanney.nomorechests.screen.ModScreenHandlers
 import com.adilhanney.nomorechests.screen.custom.InfiniteInventoryScreen
 import net.fabricmc.api.ModInitializer
@@ -18,6 +19,7 @@ object NoMoreChests : ModInitializer {
 		// Proceed with mild caution.
 		logger.info("Hello Fabric world!")
 		ModBlocks.registerModBlocks()
+		ModBlockEntityType.registerBlockEntities()
 		HandledScreens.register(ModScreenHandlers.infiniteInventoryScreenHandler, ::InfiniteInventoryScreen)
 	}
 }
