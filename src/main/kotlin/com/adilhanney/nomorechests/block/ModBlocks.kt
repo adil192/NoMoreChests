@@ -6,13 +6,15 @@ import net.minecraft.block.AbstractBlock
 import net.minecraft.block.Block
 import net.minecraft.block.MapColor
 import net.minecraft.block.enums.NoteBlockInstrument
+import net.minecraft.item.BlockItem
+import net.minecraft.item.Item
 import net.minecraft.item.ItemGroups
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
 
 object ModBlocks {
-  val infiniteChest = register(
+  val infiniteChest = registerBlock(
     "infinite_chest",
     InfiniteChestBlock(
       AbstractBlock.Settings.create()
@@ -24,9 +26,13 @@ object ModBlocks {
     )
   )
 
-  private fun <CustomBlock: Block> register(idPath: String, block: CustomBlock): CustomBlock {
+  private fun <CustomBlock: Block> registerBlock(idPath: String, block: CustomBlock): CustomBlock {
     val id = Identifier.of(NoMoreChests.modId, idPath)
+    registerBlockItem(id, block)
     return Registry.register(Registries.BLOCK, id, block)
+  }
+  private fun registerBlockItem(id: Identifier, block: Block) {
+    Registry.register(Registries.ITEM, id, BlockItem(block, Item.Settings()))
   }
 
   fun registerModBlocks() {
