@@ -3,6 +3,8 @@ package com.adilhanney.nomorechests.block
 import com.adilhanney.nomorechests.block.entity.InfiniteChestBlockEntity
 import com.adilhanney.nomorechests.block.entity.ModBlockEntityType
 import com.adilhanney.nomorechests.data.InfiniteChestInventory
+import com.adilhanney.nomorechests.screen.ModScreenHandlers
+import com.adilhanney.nomorechests.screen.custom.InfiniteInventoryScreen
 import com.mojang.serialization.MapCodec
 import net.minecraft.block.*
 import net.minecraft.block.DoubleBlockProperties.PropertySource
@@ -12,6 +14,7 @@ import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.fluid.FluidState
 import net.minecraft.fluid.Fluids
 import net.minecraft.item.ItemPlacementContext
+import net.minecraft.screen.SimpleNamedScreenHandlerFactory
 import net.minecraft.state.StateManager
 import net.minecraft.state.property.Properties
 import net.minecraft.text.Text
@@ -75,8 +78,11 @@ class InfiniteChestBlock(settings: Settings) :
       } else {
         val infiniteChestInventory = InfiniteChestInventory.of(player)
         infiniteChestInventory.activeBlockEntity = blockEntity
-//        player.openHandledScreen() // TODO: Create UI
-        return ActionResult.CONSUME;
+        player.openHandledScreen(SimpleNamedScreenHandlerFactory(
+          { i, playerInventory, playerEntity -> ModScreenHandlers.infiniteInventoryScreenHandler.create(i, playerInventory) },
+          InfiniteInventoryScreen.TITLE,
+        ))
+        return ActionResult.CONSUME
       }
     } else {
       return ActionResult.success(world.isClient)
