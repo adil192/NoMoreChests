@@ -1,8 +1,8 @@
 package com.adilhanney.nomorechests
 
+import com.adilhanney.nomorechests.block.ModBlocks
 import com.adilhanney.nomorechests.screen.ModScreenHandlers
 import com.adilhanney.nomorechests.screen.custom.InfiniteInventoryScreen
-import com.adilhanney.nomorechests.screen.custom.InfiniteInventoryScreenHandler
 import net.fabricmc.api.ModInitializer
 import net.minecraft.client.gui.screen.ingame.HandledScreens
 import org.slf4j.Logger
@@ -17,6 +17,7 @@ object NoMoreChests : ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 		logger.info("Hello Fabric world!")
+		ModBlocks.registerModBlocks()
 		HandledScreens.register(ModScreenHandlers.infiniteInventoryScreenHandler, ::InfiniteInventoryScreen)
 	}
 }

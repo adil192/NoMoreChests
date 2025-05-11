@@ -1,10 +1,12 @@
 package com.adilhanney.nomorechests.block
 
 import com.adilhanney.nomorechests.NoMoreChests
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.block.AbstractBlock
 import net.minecraft.block.Block
 import net.minecraft.block.MapColor
 import net.minecraft.block.enums.NoteBlockInstrument
+import net.minecraft.item.ItemGroups
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
@@ -25,5 +27,12 @@ object ModBlocks {
   private fun <CustomBlock: Block> register(idPath: String, block: CustomBlock): CustomBlock {
     val id = Identifier.of(NoMoreChests.modId, idPath)
     return Registry.register(Registries.BLOCK, id, block)
+  }
+
+  fun registerModBlocks() {
+    NoMoreChests.logger.info("Registering mod blocks for ${NoMoreChests.modId}")
+    ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register { entries -> {
+      entries.add(infiniteChest)
+    } }
   }
 }
