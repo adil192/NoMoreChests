@@ -6,6 +6,8 @@ import com.mojang.datafixers.types.Type
 import net.minecraft.block.Block
 import net.minecraft.block.entity.BlockEntity
 import net.minecraft.block.entity.BlockEntityType
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories
+import net.minecraft.client.render.block.entity.ChestBlockEntityRenderer
 import net.minecraft.datafixer.TypeReferences
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
@@ -26,6 +28,7 @@ class ModBlockEntityType<T : BlockEntity>(
 
     fun registerBlockEntities() {
       NoMoreChests.logger.info("Registering mod block entities for ${NoMoreChests.modId}")
+      BlockEntityRendererFactories.register(infiniteChest, ::ChestBlockEntityRenderer)
     }
   }
 }

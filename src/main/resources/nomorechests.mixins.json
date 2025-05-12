@@ -2,8 +2,9 @@
 	"required": true,
 	"package": "com.adilhanney.nomorechests.mixin",
 	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"ExampleMixin"
+	"mixins": [],
+	"client": [
+		"TexturedRenderLayersMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
