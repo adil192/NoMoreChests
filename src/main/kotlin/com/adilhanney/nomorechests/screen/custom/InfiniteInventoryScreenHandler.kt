@@ -29,18 +29,24 @@ class InfiniteInventoryScreenHandler(syncId: Int, val player: PlayerEntity) :
     }
   }
 
-  override fun quickMove(player: PlayerEntity, slot: Int): ItemStack {
-    if (slot < 0 || slot >= slots.size) return ItemStack.EMPTY
+  override fun quickMove(player: PlayerEntity, slotIndex: Int): ItemStack {
+    if (slotIndex < 0 || slotIndex >= slots.size) return ItemStack.EMPTY
 
-    TODO("Not yet implemented")
+    val slot = slots[slotIndex]
+    val stack = slot.stack
+    if (!stack.isEmpty) return ItemStack.EMPTY
+    val originalStack = stack.copy()
 
-    if (slot < slots.size - CreativeInventoryScreen.COLUMNS_COUNT) {
-      // Quick move from display inventory to player inventory
-      return ItemStack.EMPTY
+    if (slotIndex < displayInventory.size()) {
+      // TODO: Override insertItem to only take one stack (e.g. 64) max so we don't fill up the player's inventory
+      if (!insertItem(stack, displayInventory.size(), slots.size, true)) return ItemStack.EMPTY
     } else {
-      // Quick move from player inventory to display inventory
-      return ItemStack.EMPTY
+      // TODO: Override insertItem to update infiniteInventory as well
+      if (!insertItem(stack, 0, displayInventory.size(), false)) return ItemStack.EMPTY
     }
+
+    slot.markDirty()
+    return originalStack
   }
 
   override fun canUse(player: PlayerEntity): Boolean = player == this.player
