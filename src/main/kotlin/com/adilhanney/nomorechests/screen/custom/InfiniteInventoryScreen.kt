@@ -69,6 +69,12 @@ class InfiniteInventoryScreen(
     }
   }
 
+  protected override fun drawForeground(context: DrawContext?, mouseX: Int, mouseY: Int) {
+    if (selectedTab.shouldRenderName()) {
+      context!!.drawText(textRenderer, selectedTab.displayName, 8, 6, 4210752, false)
+    }
+  }
+
   private fun getGroupsToDisplay(): List<ItemGroup> {
     val groups = ItemGroups.getGroupsToDisplay().toMutableList()
 
