@@ -17,4 +17,6 @@ object ModScreenHandlers {
       FeatureSet.empty(),
     )
   )!!
+
+  fun init() {}
 }
