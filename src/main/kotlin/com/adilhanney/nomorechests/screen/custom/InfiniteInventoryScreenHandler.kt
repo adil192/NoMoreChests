@@ -1,5 +1,6 @@
 package com.adilhanney.nomorechests.screen.custom
 
+import com.adilhanney.nomorechests.data.InfiniteChestInventory
 import com.adilhanney.nomorechests.screen.ModScreenHandlers
 import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen
 import net.minecraft.entity.player.PlayerEntity
@@ -9,12 +10,14 @@ import net.minecraft.screen.slot.Slot
 
 class InfiniteInventoryScreenHandler(syncId: Int, val player: PlayerEntity) :
   ScreenHandler(ModScreenHandlers.infiniteInventoryScreenHandler, syncId) {
-  init {
-    val playerInventory = player.inventory
+  val playerInventory = player.inventory!!
+  val displayInventory = InfiniteInventoryScreen.DISPLAY_INVENTORY
+  val infiniteInventory = InfiniteChestInventory.of(player)
 
+  init {
     for (i in 0..CreativeInventoryScreen.ROWS_COUNT - 1) {
       for (j in 0..CreativeInventoryScreen.COLUMNS_COUNT - 1) {
-        addSlot(Slot(InfiniteInventoryScreen.DISPLAY_INVENTORY, i * 9 + j, 9 + j * 18, 18 + i * 18))
+        addSlot(Slot(displayInventory, i * 9 + j, 9 + j * 18, 18 + i * 18))
       }
     }
 

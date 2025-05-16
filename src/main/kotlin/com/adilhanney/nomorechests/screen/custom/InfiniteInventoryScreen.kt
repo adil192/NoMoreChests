@@ -4,6 +4,7 @@ import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.screen.ingame.AbstractInventoryScreen
 import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen
 import net.minecraft.client.gui.screen.ingame.InventoryScreen
+import net.minecraft.client.gui.widget.TextFieldWidget
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.entity.player.PlayerInventory
 import net.minecraft.inventory.SimpleInventory
@@ -37,8 +38,7 @@ class InfiniteInventoryScreen(
   }
 
   private val player = playerInventory.player as ClientPlayerEntity
-  private val creativeInventoryScreen = CreativeInventoryScreen(player,
-    player.networkHandler?.enabledFeatures, true)
+  private val creativeInventoryScreen = CustomCreativeInventoryScreen(player)
 
   init {
     player.currentScreenHandler = handler
@@ -81,6 +81,16 @@ class InfiniteInventoryScreen(
     return groups
   }
 
-
-
+  private class CustomCreativeInventoryScreen(val player: ClientPlayerEntity) :
+    CreativeInventoryScreen(player, player.networkHandler.enabledFeatures, true) {
+    // Method overridden since it replaces the screen when in survival mode
+    override fun init() {
+      x = (width - backgroundWidth) / 2
+      y = (height - backgroundHeight) / 2
+      searchBox = TextFieldWidget(textRenderer, x + 82, y + 6, 80, 9, Text.translatable("itemGroup.search"))
+      setSelectedTab(selectedTab)
+    }
+    // Method overridden since it replaces the screen when in survival mode
+    override fun handledScreenTick() {}
+  }
 }

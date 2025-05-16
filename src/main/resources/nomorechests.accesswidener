@@ -1,19 +1,10 @@
 accessWidener v2 named
 
-accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	SCROLLER_TEXTURE	Lnet/minecraft/util/Identifier;
-accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	SCROLLER_DISABLED_TEXTURE	Lnet/minecraft/util/Identifier;
-accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	TAB_TOP_UNSELECTED_TEXTURES	[Lnet/minecraft/util/Identifier;
-accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	TAB_TOP_SELECTED_TEXTURES	[Lnet/minecraft/util/Identifier;
-accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	TAB_BOTTOM_UNSELECTED_TEXTURES	[Lnet/minecraft/util/Identifier;
-accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	TAB_BOTTOM_SELECTED_TEXTURES	[Lnet/minecraft/util/Identifier;
 accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	ROWS_COUNT	I
 accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	COLUMNS_COUNT	I
-accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	TAB_WIDTH	I
-accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	TAB_HEIGHT	I
-accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	SCROLLBAR_WIDTH	I
-accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	SCROLLBAR_HEIGHT	I
-accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	DELETE_ITEM_SLOT_TEXT	Lnet/minecraft/text/Text;
-accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	WHITE	I
 accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	selectedTab	Lnet/minecraft/item/ItemGroup;
+accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	searchBox   Lnet/minecraft/client/gui/widget/TextFieldWidget;
+
 accessible	method  net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen  init  ()V
+accessible  method  net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen  setSelectedTab  (Lnet/minecraft/item/ItemGroup;)V
 accessible	method	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	renderTabIcon	(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/item/ItemGroup;)V
