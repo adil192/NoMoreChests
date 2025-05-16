@@ -65,7 +65,7 @@ class InfiniteChestInventory(
   override fun isEmpty() = stacks.isEmpty()
   override fun canPlayerUse(player: PlayerEntity) = owner == player
   override fun getMaxCountPerStack() = MAX_STACK_SIZE
-  override fun getMaxCount(stack: ItemStack) = if (stack.maxCount == 1) 1 else MAX_STACK_SIZE
+  override fun getMaxCount(stack: ItemStack) = if (stack.isStackable) MAX_STACK_SIZE else 1
   override fun getStack(slot: Int): ItemStack = stacks.getOrElse(slot) { ItemStack.EMPTY }
 
   override fun removeStack(slot: Int, amount: Int): ItemStack {
