@@ -23,8 +23,18 @@ class InfiniteInventoryScreenHandler(syncId: Int, val player: PlayerEntity) :
     }
   }
 
-  override fun quickMove(player: PlayerEntity, slot: Int): ItemStack? {
+  override fun quickMove(player: PlayerEntity, slot: Int): ItemStack {
+    if (slot < 0 || slot >= slots.size) return ItemStack.EMPTY
+
     TODO("Not yet implemented")
+
+    if (slot < slots.size - CreativeInventoryScreen.COLUMNS_COUNT) {
+      // Quick move from display inventory to player inventory
+      return ItemStack.EMPTY
+    } else {
+      // Quick move from player inventory to display inventory
+      return ItemStack.EMPTY
+    }
   }
 
   override fun canUse(player: PlayerEntity): Boolean = player == this.player
