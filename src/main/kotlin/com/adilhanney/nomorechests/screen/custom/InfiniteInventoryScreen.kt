@@ -54,6 +54,11 @@ class InfiniteInventoryScreen(
     super.init()
   }
 
+  override fun render(context: DrawContext?, mouseX: Int, mouseY: Int, delta: Float) {
+    super.render(context, mouseX, mouseY, delta)
+    drawMouseoverTooltip(context, mouseX, mouseY)
+  }
+
   protected override fun drawBackground(context: DrawContext, delta: Float, mouseX: Int, mouseY: Int) {
     for (itemGroup in getGroupsToDisplay()) {
       if (itemGroup != selectedTab) {
