@@ -23,7 +23,9 @@ class InfiniteInventoryScreen(
   companion object {
     val TITLE = Text.translatable("nomorechests.container.infinite_chest")!!
 
-    private var selectedTab = ItemGroups.getDefaultTab()!!
+    private var selectedTab: ItemGroup
+      get() = CreativeInventoryScreen.selectedTab
+      set(value) { CreativeInventoryScreen.selectedTab = value }
   }
 
   private val player = playerInventory.player as ClientPlayerEntity
