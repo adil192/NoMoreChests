@@ -21,7 +21,6 @@ class InfiniteInventoryScreen(
     title,
   ) {
   companion object {
-    // TODO: Add this to translations
     val TITLE = Text.translatable("nomorechests.container.infinite_chest")!!
 
     private var selectedTab = ItemGroups.getDefaultTab()!!
