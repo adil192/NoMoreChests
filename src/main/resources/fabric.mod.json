@@ -22,6 +22,12 @@
 				"adapter": "kotlin"
 			}
 		],
+		"client": [
+			{
+				"value": "com.adilhanney.nomorechests.NoMoreChestsClient",
+				"adapter": "kotlin"
+			}
+		],
 		"fabric-datagen": [
 			{
 				"value": "com.adilhanney.nomorechests.NoMoreChestsDataGenerator",

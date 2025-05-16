@@ -28,7 +28,6 @@ class ModBlockEntityType<T : BlockEntity>(
 
     fun registerBlockEntities() {
       NoMoreChests.logger.info("Registering mod block entities for ${NoMoreChests.modId}")
-      BlockEntityRendererFactories.register(infiniteChest, ::ChestBlockEntityRenderer)
     }
   }
 }

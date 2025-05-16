@@ -2,12 +2,15 @@ package com.adilhanney.nomorechests.screen.custom
 
 import com.adilhanney.nomorechests.data.InfiniteChestInventory
 import com.adilhanney.nomorechests.screen.ModScreenHandlers
+import net.fabricmc.api.EnvType
+import net.fabricmc.api.Environment
 import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.screen.slot.Slot
 
+@Environment(EnvType.CLIENT)
 class InfiniteInventoryScreenHandler(syncId: Int, val player: PlayerEntity) :
   ScreenHandler(ModScreenHandlers.infiniteInventoryScreenHandler, syncId) {
   val playerInventory = player.inventory!!

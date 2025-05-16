@@ -1,5 +1,7 @@
 package com.adilhanney.nomorechests.screen.custom
 
+import net.fabricmc.api.EnvType
+import net.fabricmc.api.Environment
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.screen.ingame.AbstractInventoryScreen
 import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen
@@ -13,6 +15,7 @@ import net.minecraft.item.ItemGroups
 import net.minecraft.registry.Registries
 import net.minecraft.text.Text
 
+@Environment(EnvType.CLIENT)
 class InfiniteInventoryScreen(
   handler: InfiniteInventoryScreenHandler,
   playerInventory: PlayerInventory,
@@ -87,6 +90,7 @@ class InfiniteInventoryScreen(
     return groups
   }
 
+  @Environment(EnvType.CLIENT)
   private class CustomCreativeInventoryScreen(val player: ClientPlayerEntity) :
     CreativeInventoryScreen(player, player.networkHandler.enabledFeatures, true) {
     // Method overridden since it replaces the screen when in survival mode
