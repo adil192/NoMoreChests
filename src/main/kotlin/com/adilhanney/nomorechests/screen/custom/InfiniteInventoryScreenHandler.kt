@@ -2,13 +2,13 @@ package com.adilhanney.nomorechests.screen.custom
 
 import com.adilhanney.nomorechests.data.InfiniteChestInventory
 import com.adilhanney.nomorechests.screen.ModScreenHandlers
+import com.adilhanney.nomorechests.screen.custom.util.UncappedSlot
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
 import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.screen.ScreenHandler
-import net.minecraft.screen.slot.Slot
 
 @Environment(EnvType.CLIENT)
 class InfiniteInventoryScreenHandler(syncId: Int, val player: PlayerEntity) :
@@ -20,12 +20,12 @@ class InfiniteInventoryScreenHandler(syncId: Int, val player: PlayerEntity) :
   init {
     for (i in 0..CreativeInventoryScreen.ROWS_COUNT - 1) {
       for (j in 0..CreativeInventoryScreen.COLUMNS_COUNT - 1) {
-        addSlot(Slot(displayInventory, i * 9 + j, 9 + j * 18, 18 + i * 18))
+        addSlot(UncappedSlot(displayInventory, i * 9 + j, 9 + j * 18, 18 + i * 18))
       }
     }
 
     for (i in 0..CreativeInventoryScreen.COLUMNS_COUNT - 1) {
-      addSlot(Slot(playerInventory, i, 9 + i * 18, 112))
+      addSlot(UncappedSlot(playerInventory, i, 9 + i * 18, 112))
     }
   }
 

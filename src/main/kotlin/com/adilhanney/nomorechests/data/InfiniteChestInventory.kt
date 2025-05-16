@@ -25,6 +25,7 @@ class InfiniteChestInventory(
   companion object {
     fun of(owner: PlayerEntity): InfiniteChestInventory = ModComponents.infiniteChestInventory.get(owner)
 
+    const val MAX_STACK_SIZE = 999999
     private const val STACKS_TAG = "stacks"
   }
 
@@ -63,8 +64,8 @@ class InfiniteChestInventory(
   override fun size() = stacks.size
   override fun isEmpty() = stacks.isEmpty()
   override fun canPlayerUse(player: PlayerEntity) = owner == player
-  override fun getMaxCountPerStack() = 9999999
-  override fun getMaxCount(stack: ItemStack) = if (stack.maxCount == 1) 1 else getMaxCountPerStack()
+  override fun getMaxCountPerStack() = MAX_STACK_SIZE
+  override fun getMaxCount(stack: ItemStack) = if (stack.maxCount == 1) 1 else MAX_STACK_SIZE
   override fun getStack(slot: Int): ItemStack = stacks.getOrElse(slot) { ItemStack.EMPTY }
 
   override fun removeStack(slot: Int, amount: Int): ItemStack {
