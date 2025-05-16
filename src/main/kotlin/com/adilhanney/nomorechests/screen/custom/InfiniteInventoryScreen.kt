@@ -6,6 +6,7 @@ import net.minecraft.client.gui.screen.ingame.CreativeInventoryScreen
 import net.minecraft.client.gui.screen.ingame.InventoryScreen
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.entity.player.PlayerInventory
+import net.minecraft.inventory.SimpleInventory
 import net.minecraft.item.ItemGroup
 import net.minecraft.item.ItemGroups
 import net.minecraft.registry.Registries
@@ -22,6 +23,13 @@ class InfiniteInventoryScreen(
   ) {
   companion object {
     val TITLE = Text.translatable("nomorechests.container.infinite_chest")!!
+
+    /**
+     * A fake inventory for the displayed items, not to be confused with:
+     * - The player inventory (aka the survival inventory)
+     * - The infinite chest inventory
+     */
+    val DISPLAY_INVENTORY = SimpleInventory(CreativeInventoryScreen.ROWS_COUNT * CreativeInventoryScreen.COLUMNS_COUNT)
 
     private var selectedTab: ItemGroup
       get() = CreativeInventoryScreen.selectedTab
