@@ -14,4 +14,5 @@ accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	
 accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	SCROLLBAR_HEIGHT	I
 accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	DELETE_ITEM_SLOT_TEXT	Lnet/minecraft/text/Text;
 accessible	field	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	WHITE	I
+accessible	method  net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen  init  ()V
 accessible	method	net/minecraft/client/gui/screen/ingame/CreativeInventoryScreen	renderTabIcon	(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/item/ItemGroup;)V

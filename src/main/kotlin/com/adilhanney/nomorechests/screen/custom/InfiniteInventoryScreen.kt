@@ -36,6 +36,11 @@ class InfiniteInventoryScreen(
     backgroundWidth = 195
   }
 
+  protected override fun init() {
+    creativeInventoryScreen.init(client, width, height)
+    super.init()
+  }
+
   protected override fun drawBackground(context: DrawContext, delta: Float, mouseX: Int, mouseY: Int) {
     for (itemGroup in getGroupsToDisplay()) {
       if (itemGroup != selectedTab) {
